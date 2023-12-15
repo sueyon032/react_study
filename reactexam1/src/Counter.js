@@ -1,11 +1,9 @@
 import React, {useState} from "react";
+import OddEvenResult from "./OddEvenResult";
 
-const Counter = () => {
-    console.log("counter 호출");
-
-    const [count, setCount]= useState(0);
-    // 첫번째 인덱스(count): 상태의 값, 두번째 인덱스(setCount): 상태변화 함수
-
+const Counter = ({initialValue}) => {
+    const [count, setCount]= useState(initialValue);
+   
     const onIncrease=()=>{
         setCount(count+1);
     };
@@ -14,27 +12,19 @@ const Counter = () => {
         setCount(count-1);
     };
 
-    const [count2, setCount2]= useState(0);
-
-    const onIncrease2=()=>{
-        setCount2(count2+1);
-    };
-
-    const onDecrease2=()=> {
-        setCount2(count2-1);
-    };
 
     return (
         <div>
             <h2>{count}</h2>
             <button onClick={onIncrease}>+</button>
             <button onClick={onDecrease}>-</button>
-
-            <h2>{count2}</h2>
-            <button onClick={onIncrease2}>+</button>
-            <button onClick={onDecrease2}>-</button>
+            <OddEvenResult count={count}/>
         </div>
     );
+};
+
+Counter.defaultProps={
+    initialValue:0,
 };
 
 export default Counter;
