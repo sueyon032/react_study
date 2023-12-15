@@ -1,31 +1,17 @@
 import React from 'react';
+import Counter from './Counter';
 // import './App.css';
 
 import MyHeader from './MyHeader';
 
 function App() {
 
-  const style= {
-    App:{
-      backgroundColor: "black", 
-    },
-    h2: {
-      color: "pink",
-    },
-    bold_text: {
-      color: "skyblue",
-    }
-  }
-
   const number=5;
 
   return (
-    <div style={style.App}>
+    <div>
       <MyHeader />
-      <h2 style={style.h2}>안녕 리액트</h2>
-      <b style={style.bold_text} id='bold_text'>
-        {number}는: {number%2===0 ? "짝수" : "홀수"}
-      </b>
+      <Counter/>
     </div>
   );
 }
