@@ -37,7 +37,7 @@ const DiaryEditor = () => {
 
             </div>
             <div>
-                오늘의 감정점수 :&emsp;
+                오늘의 감정점수 : &nbsp;
                 <select name="emotion" value={state.emotion} onChange={handleChangeState}>
                     <option value={1}>1</option>
                     <option value={2}>2</option>
