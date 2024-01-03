@@ -1,38 +1,25 @@
 import React, { useEffect, useState } from 'react';
 
-const LifeCycle = () => {
-    const [count, setCount] = useState(0);
-    const [text, setText] = useState("");
-
+const UnmountTest= ()=> {
     useEffect(()=>{
         console.log("Mount!");
-    },[]);
 
-    useEffect(()=>{
-        console.log("Update!");
-    });
-
-    useEffect(()=>{
-        console.log(`count is update: ${count}`);
-        if(count>5){
-            alert("count가 5를 넘었습니다 따라서 1로 초기화합니다");
-            setCount(1);
+        return ()=> {
+            // Unmount 시점에 실행되게 됨
+            console.log("Unmount!");
         }
-    }, [count]);
+    }, []);
+    return <div>UnmountTest Testing Component</div>
+}
 
-    useEffect(()=>{
-        console.log(`text is iuipdate: ${text}`);
-    }, [text]);
+const LifeCycle = () => {
+    const [isVisible, setIsVisible] = useState(false);
+    const toggle = () => setIsVisible(!isVisible);
 
     return (
         <div style={{ padding: 20 }}>
-            <div>
-                {count}
-                <button onClick={() => setCount(count + 1)}>+</button>
-            </div>
-            <div>
-                <input type={text} onChange={(e)=> setText(e.target.value)}/>
-            </div>
+            <button onClick={toggle}>ON/OFF</button>
+            {isVisible && <UnmountTest/>}
         </div >
     )
 };
