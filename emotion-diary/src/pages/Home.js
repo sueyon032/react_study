@@ -13,6 +13,11 @@ const Home = () => {
     const headText = `${curDate.getFullYear()}년 ${curDate.getMonth() + 1}월`;
 
     useEffect(() => {
+        const titleElement = document.getElementsByTagName("title")[0];
+        titleElement.innerHTML = `감정 일기장`;
+    }, []);
+
+    useEffect(() => {
         if (diaryList.length >= 1) {
             const firstDay = new Date(
                 curDate.getFullYear(),
@@ -33,9 +38,9 @@ const Home = () => {
         }
     }, [diaryList, curDate]);
 
-    useEffect(()=> {
+    useEffect(() => {
         console.log(data);
-    },[data]);
+    }, [data]);
 
     const increaseMonth = () => {
         setCurDate(
@@ -56,7 +61,7 @@ const Home = () => {
                 leftChild={<MyButton text={"<"} onClick={decreaseMonth} />}
                 rightChild={<MyButton text={">"} onClick={increaseMonth} />}
             />
-            <DiaryList diaryList={data}/>
+            <DiaryList diaryList={data} />
         </div>
     );
 };
